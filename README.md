@@ -11,6 +11,8 @@ Aim is to develop a mail inbox applica?on
     - [Installation](#installation)
     - [Usage](#usage)
     - [Frontend](#frontend)
+    - [Installation](#installation-1)
+    - [Live links](#live-links)
 
 ## Project Overview
 
@@ -56,3 +58,26 @@ The frontend application includes the following main components:
 - **Home**: Displays a welcome message and a summary of the user's messages.
 - **Inbox**: Shows a list of messages for the entered user.
 - **MessageView**: Displays the detailed content of a selected message.
+
+### Installation
+
+To start using the API, follow these steps:
+
+1. Copy the `.env.example` file and rename it to `.env`. This file contains the environment variables required for the frontend which is the api url
+
+2. Install the necessary dependencies by running the following command:
+
+   ```shell
+   npm install
+   ```
+
+3. to start server:
+   ```shell
+   npm start
+   ```
+4. the frontend would be started on port 3000
+
+### Live links
+
+- Frontend: [https://mail-inbox-homework-oqjhl1btd-bwise1.vercel.app/](https://mail-inbox-homework-oqjhl1btd-bwise1.vercel.app/)
+- Backend: [https://inbox-v7r9.onrender.com/](https://inbox-v7r9.onrender.com/)
