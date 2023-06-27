@@ -1,10 +1,15 @@
 import React from "react";
 
-export default function Message() {
+export default function Message(props) {
+  const { subject, content, isRead } = props;
+
+  const truncatedContent =
+    content.length > 10 ? content.substring(0, 10) + "..." : content;
+
   return (
     <div>
-      <div>Message</div>
-      <div>Hello me again</div>
+      <div>{subject}</div>
+      <div>{isRead ? content : truncatedContent}</div>
     </div>
   );
 }

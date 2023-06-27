@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
 import "./App.css";
+import Login from "./pages/Login";
+import Inbox from "./pages/Inbox";
 
 function App() {
-  const [name, setName] = useState("");
-
-  const handleChange = (event) => {
-    setName(event.target.value);
-  };
   return (
     <div className="App">
-      <div>Welcome to home page</div>
-      <p>Enter your name</p>
-      <input type="text" value={name} onChange={handleChange} />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/inbox" element={<Inbox />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
