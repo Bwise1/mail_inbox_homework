@@ -4,6 +4,7 @@ import Message from "../components/Message";
 export default function Inbox() {
   const userData = JSON.parse(localStorage.getItem("data"));
   const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchMessages(userData.id);
@@ -15,13 +16,14 @@ export default function Inbox() {
       .then((response) => response.json())
       .then((data) => {
         setMessages(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Failed to fetch messages:", error);
       });
   };
 
-  if (!messages) {
+  if (loading) {
     return <div>Loading...</div>;
   }
   return (

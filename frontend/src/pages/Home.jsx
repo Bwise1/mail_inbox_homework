@@ -1,13 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const userData = JSON.parse(localStorage.getItem("data"));
 
-  const navigate = useNavigate();
-
   if (!userData) {
-    navigate("/login");
+    window.location.href = "/login";
     return null;
   }
 
