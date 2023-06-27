@@ -1,8 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Home() {
   const userData = JSON.parse(localStorage.getItem("data"));
+
+  const navigate = useNavigate();
+
+  if (!userData) {
+    navigate("/login");
+    return null;
+  }
 
   return (
     <div className="wrapper text-xl flex flex-col items-center justify-center gap-10">

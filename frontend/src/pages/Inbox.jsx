@@ -20,12 +20,16 @@ export default function Inbox() {
         console.error("Failed to fetch messages:", error);
       });
   };
+
+  if (!messages) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="msgWrapper overflow-hidden ">
       <div className="text-xl font-bold pb-4">Messages</div>
       <div className="">
         <div className=" msgInbox p-5 flex flex-col gap-4 overflow-auto ">
-          {messages.length === 0 ? (
+          {messages && messages.length === 0 ? (
             <p>You have 0 messages in your inbox</p>
           ) : (
             messages.map((message, index) => (
