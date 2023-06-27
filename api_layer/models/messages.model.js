@@ -23,4 +23,34 @@ Message.findAllByUserId = async (userId) => {
   }
 };
 
+Message.findOneByID = async (messageId) => {
+  console.log(messageId);
+  try {
+    const query = "SELECT * FROM messages WHERE id = ?";
+    const rows = await db.query(query, [messageId]);
+
+    if (rows.length === 0) {
+      return null;
+    }
+    const message = new Message(rows[0]);
+    if (!message.isRead) {
+      await Message.updateIsRead(messageId);
+      message.isRead = true;
+    }
+    return message;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+Message.updateIsRead = async (messageId) => {
+  try {
+    const query = "UPDATE messages SET isRead = ? WHERE id = ?";
+    await db.query(query, [true, messageId]);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = Message;

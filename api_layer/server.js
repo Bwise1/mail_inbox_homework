@@ -38,6 +38,17 @@ app.get("/messages/:userId", async (req, res) => {
   }
 });
 
+app.get("/messages/inbox/:messageId", async (req, res) => {
+  try {
+    const { messageId } = req.params;
+
+    const msg = await messages.findOneByID(messageId);
+    res.json(msg);
+  } catch (error) {
+    res.status(500).json({ error: "failed to retrieve messages" });
+  }
+});
+
 app.listen(3001, function () {
   console.log("app listening on port 3001!");
 });
