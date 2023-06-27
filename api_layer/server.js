@@ -14,16 +14,20 @@ app.get("/", function (req, res) {
 });
 
 app.post("/login", async function (req, res) {
-  const username = req.body.username;
+  try {
+    const username = req.body.username;
 
-  const loggedIn = await myUser.findOne(username);
+    const loggedIn = await myUser.findOne(username);
 
-  if (loggedIn == null) {
-    res.status(204).send({ message: "User not found" });
-  } else {
-    res.status(200).send({
-      data: loggedIn,
-    });
+    if (loggedIn == null) {
+      res.status(401).json({ message: " unauthorized access" });
+    } else {
+      res.status(200).send({
+        data: loggedIn,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "failed to retrieve user" });
   }
 });
 

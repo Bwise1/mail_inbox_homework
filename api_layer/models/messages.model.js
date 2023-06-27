@@ -11,7 +11,7 @@ const Message = function (message) {
 Message.findAllByUserId = async (userId) => {
   try {
     let query = "SELECT * FROM messages WHERE userId = ?";
-    const [rows] = await db.query(query, [userId]);
+    const rows = await db.query(query, [userId]);
     if (!Array.isArray(rows)) {
       return [new Message(rows)];
     }
@@ -24,7 +24,6 @@ Message.findAllByUserId = async (userId) => {
 };
 
 Message.findOneByID = async (messageId) => {
-  console.log(messageId);
   try {
     const query = "SELECT * FROM messages WHERE id = ?";
     const rows = await db.query(query, [messageId]);

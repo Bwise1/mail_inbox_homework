@@ -21,16 +21,28 @@ export default function Inbox() {
       });
   };
   return (
-    <div className="bg-slate-50  ">
-      <div>Messages</div>
-      {messages.map((message) => (
-        <Message
-          key={message.id}
-          subject={message.subject}
-          content={message.content}
-          isRead={message.isRead}
-        />
-      ))}
+    <div className="msgWrapper overflow-hidden ">
+      <div className="text-xl font-bold pb-4">Messages</div>
+      <div className="">
+        <div className=" msgInbox p-5 flex flex-col gap-4 overflow-auto ">
+          {messages.length === 0 ? (
+            <p>You have 0 messages in your inbox</p>
+          ) : (
+            messages.map((message, index) => (
+              <>
+                <Message
+                  key={message.id}
+                  id={message.id}
+                  subject={message.subject}
+                  content={message.content}
+                  isRead={message.isRead}
+                />
+                {index !== messages.length - 1 && <hr />}
+              </>
+            ))
+          )}
+        </div>
+      </div>
     </div>
   );
 }

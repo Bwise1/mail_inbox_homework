@@ -17,9 +17,21 @@ code {
 }
 
 .wrapper {
-  /* display: flex;
-  flex-direction: column;
-  gap: 15px; */
   background-color: rgb(173, 208, 208);
+  padding: 60px;
+  width: 600px;
+  height: 400px;
+}
+
+.msgWrapper {
+  background-color: aliceblue;
   padding: 20px;
+  width: 600px;
+  height: 400px;
+}
+
+.msgInbox {
+  background-color: rgb(173, 208, 208);
+  border: 2px solid black;
+  height: 320px;
 }
